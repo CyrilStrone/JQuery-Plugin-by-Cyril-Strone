@@ -6,6 +6,7 @@ body {
 }
 
 .Title {
+    position: static;
     margin-top: 30px;
     width: 1000px;
     height: 75px;
@@ -13,20 +14,31 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
-    text-align: center;
-    padding-top: 30px;
 }
 
-.Title {
+.Title h1{
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
     line-height: 34px;
     color: #FFFFFF;
+    text-align: center;
 }
 
-.SLider-general {
+.slider-general {
+    width: 300px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.slider-options {
     width: 1000px;
     height: 400px;
     background: #C4C4C4;
@@ -34,12 +46,65 @@ body {
     margin-right: auto;
     margin-bottom: 30px;
 }
-
-.SLider-options {
-    width: 1000px;
-    height: 400px;
-    background: #C4C4C4;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
+#slider-line_big
+{
+    background: #FFFFFF;
+    width: 266px;
+    height: 6px;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+#slider-line_min
+{
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+    width: 100px;
+    height: 4px;
+   
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+#slider-circle_one
+{
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+    border: 2px solid #FFFFFF;
+    border-radius: 10px;
+}
+#slider-circle_two
+{
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+    border: 2px solid #FFFFFF;
+    border-radius: 10px;
+}
+#slider-title_one
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: #1F2041;
+}
+#slider-title_two
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(31, 32, 65, 0.5);
+}
+#slider-money
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(31, 32, 65, 0.5);
 }
