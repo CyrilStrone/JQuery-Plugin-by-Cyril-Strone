@@ -48,9 +48,11 @@ height: 4px;
 border-radius: 3px;`;
 
 let SliderCircleOne = document.createElement('slider-circle_one')
+SliderCircleOne.id = 'CircleOne';
 SliderCircleOne.style.cssText=`
-position: relative;
 top:-15px;
+right:-20px;
+position: relative;
 display:inline-block;
 width: 12px;
 height: 12px;
@@ -59,10 +61,11 @@ border: 2px solid #FFFFFF;
 border-radius: 10px;`;
 
 let SliderCircleTwo = document.createElement('slider-circle_two')
+SliderCircleTwo.id = 'CircleTwo';
 SliderCircleTwo.style.cssText=`
-position: relative;
 top:-15px;
-right:-80px;
+right:-40px;
+position: relative;
 display:inline-block;
 width: 12px;
     height: 12px;
@@ -88,3 +91,34 @@ SliderLineBig.appendChild(SliderLineMig)
 SliderGeneral.appendChild(SliderCircleOne)
 SliderGeneral.appendChild(SliderCircleTwo)
 SliderGeneral.appendChild(SliderTitleTwo)
+
+
+var SliderCircleOneMove = document.getElementById('CircleOne');
+var listenerOne = function(e) {
+    SliderCircleOneMove.style.left = e.pageX - 190 + "px";
+};
+
+CircleOne.addEventListener('mousedown', e => {
+    document.addEventListener('mousemove', listenerOne);
+});
+
+CircleOne.addEventListener('mouseup', e => {
+    document.removeEventListener('mousemove', listenerOne);
+});
+
+
+var SliderCircleTwoMove = document.getElementById('CircleTwo');
+var listenerTwo = function(e) {
+    SliderCircleTwoMove.style.left = e.pageX - 200 + "px";
+};
+
+CircleTwo.addEventListener('mousedown', e => {
+    document.addEventListener('mousemove', listenerTwo);
+});
+
+CircleTwo.addEventListener('mouseup', e => {
+    document.removeEventListener('mousemove', listenerTwo);
+});
+
+
+
