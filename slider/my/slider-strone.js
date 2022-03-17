@@ -26,6 +26,7 @@ line-height: 14px;
 color: rgba(31, 32, 65, 0.5);`;
 
 let SliderLineBig = document.createElement('slider-line_big')
+SliderLineBig.id = 'slider';
 SliderLineBig.style.cssText=`
 
 display:inline-block;
@@ -37,6 +38,7 @@ border: 1px solid rgba(31, 32, 65, 0.25);
 
 border-radius: 3px;`;
 let SliderLineMig = document.createElement('slider-line_min')
+
 SliderLineMig.style.cssText=`
 position: relative;
 
@@ -50,10 +52,10 @@ border-radius: 3px;`;
 let SliderCircleOne = document.createElement('slider-circle_one')
 SliderCircleOne.id = 'CircleOne';
 SliderCircleOne.style.cssText=`
-top:-15px;
-right:-20px;
-position: relative;
-display:inline-block;
+cursor: pointer;
+
+position: absolute;
+margin-top:-10px;
 width: 12px;
 height: 12px;
 background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
@@ -63,10 +65,10 @@ border-radius: 10px;`;
 let SliderCircleTwo = document.createElement('slider-circle_two')
 SliderCircleTwo.id = 'CircleTwo';
 SliderCircleTwo.style.cssText=`
-top:-15px;
-right:-40px;
-position: relative;
-display:inline-block;
+cursor: pointer;
+position: absolute;
+
+left: 50px;
 width: 12px;
     height: 12px;
     background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
@@ -88,37 +90,48 @@ SliderGeneral.appendChild(SliderTitleOne)
 SliderGeneral.appendChild(SliderMoney)
 SliderGeneral.appendChild(SliderLineBig)
 SliderLineBig.appendChild(SliderLineMig)
-SliderGeneral.appendChild(SliderCircleOne)
-SliderGeneral.appendChild(SliderCircleTwo)
+SliderLineBig.appendChild(SliderCircleOne)
+SliderLineBig.appendChild(SliderCircleTwo)
 SliderGeneral.appendChild(SliderTitleTwo)
 
 
-var SliderCircleOneMove = document.getElementById('CircleOne');
-var listenerOne = function(e) {
-    SliderCircleOneMove.style.left = e.pageX - 190 + "px";
+
+
+
+let thumb = document.getElementById('CircleOne');
+
+thumb.onmousedown = function(event) {
+  event.preventDefault(); // предотвратить запуск выделения (действие браузера)
+
+  let shiftX = event.clientX - thumb.getBoundingClientRect().left;
+  // shiftY здесь не нужен, слайдер двигается только по горизонтали
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', onMouseUp);
+
+  function onMouseMove(event) {
+    let newLeft = event.clientX - shiftX - slider.getBoundingClientRect().left;
+
+    // курсор вышел из слайдера => оставить бегунок в его границах.
+    if (newLeft < 0) {
+      newLeft = 0;
+    }
+    let rightEdge = slider.offsetWidth - thumb.offsetWidth;
+    if (newLeft > rightEdge) {
+      newLeft = rightEdge;
+    }
+
+    thumb.style.left = newLeft + 'px';
+  }
+
+  function onMouseUp() {
+    document.removeEventListener('mouseup', onMouseUp);
+    document.removeEventListener('mousemove', onMouseMove);
+  }
+
 };
 
-CircleOne.addEventListener('mousedown', e => {
-    document.addEventListener('mousemove', listenerOne);
-});
-
-CircleOne.addEventListener('mouseup', e => {
-    document.removeEventListener('mousemove', listenerOne);
-});
-
-
-var SliderCircleTwoMove = document.getElementById('CircleTwo');
-var listenerTwo = function(e) {
-    SliderCircleTwoMove.style.left = e.pageX - 200 + "px";
+thumb.ondragstart = function() {
+  return false;
 };
-
-CircleTwo.addEventListener('mousedown', e => {
-    document.addEventListener('mousemove', listenerTwo);
-});
-
-CircleTwo.addEventListener('mouseup', e => {
-    document.removeEventListener('mousemove', listenerTwo);
-});
-
-
 
