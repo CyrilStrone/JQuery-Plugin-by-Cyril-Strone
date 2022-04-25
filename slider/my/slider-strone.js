@@ -14,9 +14,6 @@ SliderTitleOne.style.cssText = `
   text-transform: uppercase;
   color: #1F2041;`;
 
-
-
-
 let SliderMoney = document.createElement('slider-money')
 SliderMoney.style.cssText = `
   float:right;
@@ -27,11 +24,13 @@ SliderMoney.style.cssText = `
   font-size: 12px;
   line-height: 14px;
   color: rgba(31, 32, 65, 0.5);`;
-let SliderMoneyOne = document.createElement('slider-money-one')
-SliderMoneyOne.textContent = `₽0 -`;
 
+let SliderMoneyOne = document.createElement('slider-money-one')
+SliderMoneyOne.textContent = `₽0`;
+let SliderMoneyThree = document.createElement('slider-money-three')
+SliderMoneyOne.textContent = ` - `;
 let SliderMoneyTwo = document.createElement('slider-money-two')
-SliderMoneyTwo.textContent = ` ₽0`;
+SliderMoneyTwo.textContent = `₽0`;
 
 
 let SliderLine = document.createElement('slider')
@@ -39,11 +38,12 @@ SliderLine.id = 'slider';
 SliderLine.style.cssText = `
   display:inline-block;
   background: #FFFFFF;
-  width: 266px;
   height: 4px;
   border: 1px solid rgba(31, 32, 65, 0.25);
   border-radius: 3px;`;
 
+let SliderLineWidth = 266;
+SliderLine.style.width = SliderLineWidth + 'px';
 
 
 let SliderCircleOne = document.createElement('slider-circle_one')
@@ -53,11 +53,15 @@ SliderCircleOne.style.cssText = `
   cursor: pointer;
   position: absolute;
   margin-top:-6px;
-  width: 12px;
-  height: 12px;
   background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
   border: 2px solid #FFFFFF;
   border-radius: 10px;`;
+
+let SliderCircleOneWidthHeight = 12;
+
+SliderCircleOne.style.width = SliderCircleOneWidthHeight + 'px';
+
+SliderCircleOne.style.height = SliderCircleOneWidthHeight + 'px';
 
 let SliderCircleTwo = document.createElement('slider-circle_two')
 SliderCircleTwo.id = 'CircleTwo';
@@ -66,11 +70,17 @@ SliderCircleTwo.style.cssText = `
   cursor: pointer;
   position: absolute;
   margin-top:-6px;
-  width: 12px;
-  height: 12px;
   background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
   border: 2px solid #FFFFFF;
   border-radius: 10px;`;
+
+let SliderCircleTwoWidthHeight = 12;
+
+SliderCircleTwo.style.width = SliderCircleTwoWidthHeight + 'px';
+
+SliderCircleTwo.style.height = SliderCircleTwoWidthHeight + 'px';
+
+let SliderCircleBorder = 2;
 
 let SliderLineMin = document.createElement('slider-line_min')
 SliderLineMin.style.cssText = `
@@ -96,7 +106,10 @@ SliderTitleTwo.style.cssText = `
 SliderGeneral.appendChild(SliderTitleOne)
 SliderGeneral.appendChild(SliderMoney)
 SliderMoney.appendChild(SliderMoneyOne)
+SliderMoney.appendChild(SliderMoneyThree)
 SliderMoney.appendChild(SliderMoneyTwo)
+
+
 SliderGeneral.appendChild(SliderLine)
 SliderLine.appendChild(SliderCircleOne)
 SliderLine.appendChild(SliderCircleTwo)
@@ -104,10 +117,15 @@ SliderLine.appendChild(SliderLineMin)
 SliderGeneral.appendChild(SliderTitleTwo)
 
 
-let newLeftCircleOne;
-let newLeftCircleTwo;
+let MaximumValue = 20000;
+let coefficient = (MaximumValue / (SliderLineWidth - SliderCircleOneWidthHeight - SliderCircleBorder)).toFixed(2);
+
+
 let startingPointCircleOne = 0;
-let startingPointCircleTwo = 30;
+let startingPointCircleTwo = 60;
+
+let newLeftCircleOne = 0;
+let newLeftCircleTwo = startingPointCircleTwo;
 
 
 
@@ -118,63 +136,65 @@ SliderCircleTwo.style.left = startingPointCircleTwo + 'px';
 SliderLineMin.style.left = startingPointCircleOne + 'px';
 SliderLineMin.style.width = startingPointCircleTwo - startingPointCircleOne + 'px';
 
-SliderMoneyOne.textContent = `₽${ startingPointCircleOne } -`;
-SliderMoneyTwo.textContent = ` ₽${ startingPointCircleTwo } `;
+SliderMoneyOne.textContent = `₽${ startingPointCircleOne }`;
+SliderMoneyThree.textContent = ` - `;
+SliderMoneyTwo.textContent = ` ₽${ Math.trunc(startingPointCircleTwo*coefficient) }`;
+
+
+
+
 
 
 SliderCircleOne.onmousedown = function(event) {
-
     event.preventDefault(); // предотвратить запуск выделения (действие браузера)
 
-    let shiftX = event.clientX - SliderCircleOne.getBoundingClientRect().left;
+    let shiftXOne = event.clientX - SliderCircleOne.getBoundingClientRect().left;
     // shiftY здесь не нужен, слайдер двигается только по горизонтали
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
 
-
-
     function onMouseMove(event) {
 
-        newLeftCircleOne = event.clientX - shiftX - slider.getBoundingClientRect().left;
+        newLeftCircleOne = event.clientX - shiftXOne - slider.getBoundingClientRect().left;
 
         // курсор вышел из слайдера => оставить бегунок в его границах.
         if (newLeftCircleOne < 0) {
             newLeftCircleOne = 0;
         }
+
+
         let rightEdge = slider.offsetWidth - SliderCircleOne.offsetWidth;
         if (newLeftCircleOne > rightEdge) {
             newLeftCircleOne = rightEdge;
         }
 
         SliderCircleOne.style.left = newLeftCircleOne + 'px';
-        SliderLineMin.style.left = newLeftCircleOne + 'px';
-        SliderLineMin.style.width = newLeftCircleTwo - newLeftCircleOne + 'px';
 
+        if (newLeftCircleOne < newLeftCircleTwo) {
+            SliderLineMin.style.left = newLeftCircleOne + 'px';
+            SliderLineMin.style.width = newLeftCircleTwo - newLeftCircleOne + 'px';
+            SliderMoneyOne.textContent = `₽${ Math.trunc(newLeftCircleOne*coefficient) }`;
+        }
+        if (newLeftCircleOne > newLeftCircleTwo) {
+            SliderLineMin.style.left = newLeftCircleTwo + 'px';
+            SliderLineMin.style.width = newLeftCircleOne - newLeftCircleTwo + 'px';
+            SliderMoneyTwo.textContent = `₽${ Math.trunc(newLeftCircleOne*coefficient) }`;
+        }
 
 
         //деньги
-        SliderMoneyOne.textContent = `₽${ Math.trunc(newLeftCircleOne) } -`;
 
     }
-
-
 
     function onMouseUp() {
         document.removeEventListener('mouseup', onMouseUp);
         document.removeEventListener('mousemove', onMouseMove);
     }
-
-
 };
-
 SliderCircleOne.ondragstart = function() {
     return false;
 };
-
-
-
-
 SliderCircleTwo.onmousedown = function(event) {
     event.preventDefault(); // предотвратить запуск выделения (действие браузера)
 
@@ -183,8 +203,6 @@ SliderCircleTwo.onmousedown = function(event) {
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
-
-
 
     function onMouseMove(event) {
 
@@ -198,32 +216,29 @@ SliderCircleTwo.onmousedown = function(event) {
         if (newLeftCircleTwo > rightEdge) {
             newLeftCircleTwo = rightEdge;
         }
+        if (newLeftCircleTwo > newLeftCircleOne) {
+            SliderLineMin.style.left = newLeftCircleOne + 'px';
+            SliderLineMin.style.width = newLeftCircleTwo - newLeftCircleOne + 'px';
+            SliderMoneyTwo.textContent = ` ₽${ Math.trunc(newLeftCircleTwo*coefficient) }`;
+        }
+        if (newLeftCircleTwo < newLeftCircleOne) {
+            SliderLineMin.style.left = newLeftCircleTwo + 'px';
+            SliderLineMin.style.width = newLeftCircleOne - newLeftCircleTwo + 'px';
+            SliderMoneyOne.textContent = ` ₽${ Math.trunc(newLeftCircleTwo*coefficient) }`;
+        }
+
 
         SliderCircleTwo.style.left = newLeftCircleTwo + 'px';
-        SliderLineMin.style.left = newLeftCircleOne + 'px';
-        SliderLineMin.style.width = newLeftCircleTwo - newLeftCircleOne + 'px';
+
         //деньги
-        SliderMoneyTwo.textContent = ` ₽${ Math.trunc(newLeftCircleTwo) }`;
     }
-
-
 
     function onMouseUp() {
         document.removeEventListener('mouseup', onMouseUp);
         document.removeEventListener('mousemove', onMouseMove);
     }
-
 };
 
 SliderCircleTwo.ondragstart = function() {
     return false;
-};
-
-
-SliderInfo = function(event) {
-
-
-    SliderLineMin.style.left = newLeftCircleOne + 'px';
-
-
 };
