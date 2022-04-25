@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+html,
+body {
+    overflow: auto;
+    /* убираем схлопывание верхних внешних отступов */
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -15,7 +21,7 @@ body {
     margin-bottom: 30px;
 }
 
-.Title h1{
+.Title h1 {
     width: 300px;
     margin: 0;
     padding: 0;
@@ -27,17 +33,19 @@ body {
     line-height: 34px;
     color: #FFFFFF;
     text-align: center;
-
-    
 }
 
-.slider-general {
+.slider-block {
     position: relative;
     width: 266px;
     height: 200px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
+}
+
+.slider-general {
+    position: absolute;
 }
 
 .slider-options {
@@ -48,5 +56,3 @@ body {
     margin-right: auto;
     margin-bottom: 30px;
 }
-
-
