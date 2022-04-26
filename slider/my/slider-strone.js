@@ -1,6 +1,10 @@
 let SliderGeneral = document.querySelector('.slider-general');
 
-let VorG = false;
+let VorG = true;
+let MaximumValue = 5000;
+let startingPointCircleOne = 20;
+let startingPointCircleTwo = 120;
+
 
 let SliderTitleOne = document.createElement('slider-title_one')
 SliderTitleOne.textContent = 'Диапозон цены';
@@ -160,7 +164,7 @@ SliderCircleOne.style.height = SliderCircleOneWidthHeight + 'px';
 
 let SliderCircleBorder = 2;
 
-let MaximumValue = 20000;
+
 let coefficient;
 
 
@@ -170,10 +174,9 @@ let coefficient;
 
 
 
-let startingPointCircleOne = 0;
-let startingPointCircleTwo = 60;
-let newLeftCircleOne = 0;
+let newLeftCircleOne = startingPointCircleOne;
 let newLeftCircleTwo = startingPointCircleTwo;
+
 
 if (VorG == true) {
     SliderCircleOne.style.left = startingPointCircleOne + 'px';
@@ -195,7 +198,7 @@ if (VorG == true) {
 
 
 
-SliderMoneyOne.textContent = `₽${ startingPointCircleOne }`;
+SliderMoneyOne.textContent = ` ₽${ Math.trunc(startingPointCircleOne*coefficient) }`;
 SliderMoneyThree.textContent = ` - `;
 SliderMoneyTwo.textContent = ` ₽${ Math.trunc(startingPointCircleTwo*coefficient) }`;
 
