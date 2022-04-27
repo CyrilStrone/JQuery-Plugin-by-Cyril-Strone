@@ -9,8 +9,6 @@
 
     <link rel="stylesheet" href="slider-strone.css">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 
 </head>
 
@@ -20,14 +18,57 @@
 
     </div>
     <div class="slider-block">
-        <div class="slider-general" id="slider-general">
+        <div class="slider-general" id="slider-general"></div>
+        <div class="slider-options">
+            <div class="slider-block__values">
+                <div class="slider-block__values-block">
+                    <h1>
+                        Максимальное значение
+                    </h1>
+                    <input id="max" type="text">
+                </div>
+                <div class="slider-block__values-block">
+                    <h1>
+                        Начальная позиция 1 круг
+                    </h1>
+                    <input id="minPosCircle" type="text">
+                </div>
+                <div id="elem1" class="slider-block__values-block">
+                    <h1>
+                        Начальная позиция 2 круг
+                    </h1>
+                    <input id="maxPosCircle" type="text">
+                </div>
+                <div class="slider-block__values-block">
+                    <h1>
+                        Шаг
+                    </h1>
+                    <input id="stepSize" type="text">
+                </div>
+                <div class="slider-block__values-block">
+                    <h1>
+                        Длина слайдера
+                    </h1>
+                    <input id="LineWidth" type="text">
+                </div>
+                <div class="slider-block__values-block">
+                    <h1>
+                        Ширина слайдера
+                    </h1>
+                    <input id="LineHeight" type="text">
+                </div>
+                <div class="slider-block__values-block">
+
+                    <input id="sliderbutton" type="button" value="Готово">
+                </div>
+
+            </div>
         </div>
-    </div>
-
-
-    <div class="slider-options">
 
     </div>
+
+
+
 
     <script src="slider-strone.js"></script>
 
