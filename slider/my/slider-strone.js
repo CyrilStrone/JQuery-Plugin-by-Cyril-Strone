@@ -371,10 +371,17 @@ function fun2() {
 sliderbutton.onclick = function(event) {
     fun1()
     fun2()
-
+    let a;
+    let b;
     MaximumValue = document.getElementById('max').value;
     startingPointViewCircleOne = document.getElementById('minPosCircle').value;
     startingPointViewCircleTwo = document.getElementById('maxPosCircle').value;
+    if (startingPointViewCircleOne >= startingPointViewCircleTwo) {
+        a = startingPointViewCircleOne;
+        b = startingPointViewCircleTwo;
+        startingPointViewCircleOne = b;
+        startingPointViewCircleTwo = a;
+    }
     SliderStepSize = Number(document.getElementById('stepSize').value);
     SliderLineWidth = document.getElementById('LineWidth').value;
     SliderLineHeight = document.getElementById('LineHeight').value;
