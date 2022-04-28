@@ -142,7 +142,8 @@ SliderLine.appendChild(SliderCircleTwoV)
 SliderLine.appendChild(SliderLineMin)
 SliderGeneral.appendChild(SliderTitleTwo)
 
-let VorG = false;
+let VorG;
+let OorT;
 
 function fun1() {
 
@@ -176,15 +177,18 @@ function fun1() {
 
                 SliderCircleOneV.style.top = newLeftCircleOne + 'px';
 
-                if (newLeftCircleOne <= newLeftCircleTwo) {
+                if (newLeftCircleOne <= newLeftCircleTwo && OorT == true) {
                     SliderLineMin.style.top = newLeftCircleOne + 'px';
                     SliderLineMin.style.height = newLeftCircleTwo - newLeftCircleOne + 'px';
                     SliderMoneyOne.textContent = `₽${ fn(Math.trunc(newLeftCircleOne * coefficient), SliderStepSize)}`;
                 }
-                if (newLeftCircleOne >= newLeftCircleTwo) {
+                if (newLeftCircleOne >= newLeftCircleTwo && OorT == true) {
                     SliderLineMin.style.top = newLeftCircleTwo + 'px';
                     SliderLineMin.style.height = newLeftCircleOne - newLeftCircleTwo + 'px';
                     SliderMoneyTwo.textContent = `₽${ fn(Math.trunc(newLeftCircleOne * coefficient), SliderStepSize) }`;
+                }
+                if (OorT == false) {
+                    SliderMoneyOne.textContent = `₽${ fn(Math.trunc(newLeftCircleOne * coefficient), SliderStepSize)}`;
                 }
 
 
@@ -276,15 +280,18 @@ function fun1() {
 
                 SliderCircleOneG.style.left = newLeftCircleOne + 'px';
 
-                if (newLeftCircleOne < newLeftCircleTwo) {
+                if (newLeftCircleOne < newLeftCircleTwo && OorT == true) {
                     SliderLineMin.style.left = newLeftCircleOne + 'px';
                     SliderLineMin.style.width = newLeftCircleTwo - newLeftCircleOne + 'px';
                     SliderMoneyOne.textContent = `₽${ fn(Math.trunc(newLeftCircleOne * coefficient), SliderStepSize) }`;
                 }
-                if (newLeftCircleOne > newLeftCircleTwo) {
+                if (newLeftCircleOne > newLeftCircleTwo && OorT == true) {
                     SliderLineMin.style.left = newLeftCircleTwo + 'px';
                     SliderLineMin.style.width = newLeftCircleOne - newLeftCircleTwo + 'px';
                     SliderMoneyTwo.textContent = `₽${ fn(Math.trunc(newLeftCircleOne * coefficient), SliderStepSize)}`;
+                }
+                if (OorT == false) {
+                    SliderMoneyOne.textContent = `₽${ fn(Math.trunc(newLeftCircleOne * coefficient), SliderStepSize) }`;
                 }
 
 
@@ -333,6 +340,7 @@ function fun1() {
                 }
 
 
+
                 SliderCircleTwoG.style.left = newLeftCircleTwo + 'px';
 
                 //деньги
@@ -350,8 +358,19 @@ function fun1() {
     }
 }
 
+function fun2() {
+    var chboxtwo;
+    chboxtwo = document.getElementById('OorT');
+    if (chboxtwo.checked) {
+        OorT = false;
+    } else {
+        OorT = true;
+    }
+}
+
 sliderbutton.onclick = function(event) {
     fun1()
+    fun2()
 
     MaximumValue = document.getElementById('max').value;
     startingPointViewCircleOne = document.getElementById('minPosCircle').value;
@@ -477,7 +496,25 @@ sliderbutton.onclick = function(event) {
     SliderMoneyOne.textContent = ` ₽${fn(Math.trunc(startingPointCircleOne * coefficient), SliderStepSize)}`;
     SliderMoneyThree.textContent = ` - `;
     SliderMoneyTwo.textContent = ` ₽${  fn(Math.trunc(startingPointCircleTwo * coefficient), SliderStepSize)}`;
+    if (OorT == true && VorG == true) {
+        SliderLineMin.style.display = 'block';
+        SliderMoneyTwo.style.display = 'inline-block';
+        SliderMoneyThree.style.display = 'inline-block';
+        SliderCircleTwoG.style.display = 'block';
 
+    } else if (OorT == true && VorG == false) {
+        SliderLineMin.style.display = 'block';
+        SliderMoneyTwo.style.display = 'inline-block';
+        SliderMoneyThree.style.display = 'inline-block';
+        SliderCircleTwoV.style.display = 'block';
+    } else {
+
+        SliderLineMin.style.display = 'none';
+        SliderCircleTwoG.style.display = 'none';
+        SliderCircleTwoV.style.display = 'none';
+        SliderMoneyTwo.style.display = 'none';
+        SliderMoneyThree.style.display = 'none';
+    }
 
 };
 sliderbutton.click();
