@@ -1,1 +1,0 @@
-# JQuery-Plugin-by-Cyril-Strone

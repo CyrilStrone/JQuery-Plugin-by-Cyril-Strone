@@ -8,6 +8,7 @@
     <title>Slider-Strone</title>
 
     <link rel="stylesheet" href="slider-strone.css">
+    <link rel="stylesheet" href="toggle.css">
 
 
 </head>
@@ -58,9 +59,20 @@
                     <input id="LineHeight" type="text">
                 </div>
                 <div class="slider-block__values-block">
+                    <h1>
+                        Горизонтальный/Вертикальный
+                    </h1>
+                    <label class=" ui-kit__switch">
+                        <input id="VorG" type="checkbox" onchange="fun1()" >
+                        <span  class="ui-kit__switch__slider ui-kit__switch__round" ></span>
+                    </label>
+                </div>
+                <div class="slider-block__values-block">
 
                     <input id="sliderbutton" type="button" value="Готово">
                 </div>
+
+
 
             </div>
         </div>
