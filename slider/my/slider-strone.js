@@ -376,12 +376,7 @@ sliderbutton.onclick = function(event) {
     MaximumValue = document.getElementById('max').value;
     startingPointViewCircleOne = document.getElementById('minPosCircle').value;
     startingPointViewCircleTwo = document.getElementById('maxPosCircle').value;
-    if (startingPointViewCircleOne >= startingPointViewCircleTwo) {
-        a = startingPointViewCircleOne;
-        b = startingPointViewCircleTwo;
-        startingPointViewCircleOne = b;
-        startingPointViewCircleTwo = a;
-    }
+
     SliderStepSize = Number(document.getElementById('stepSize').value);
     SliderLineWidth = document.getElementById('LineWidth').value;
     SliderLineHeight = document.getElementById('LineHeight').value;
@@ -390,6 +385,7 @@ sliderbutton.onclick = function(event) {
     if (MaximumValue == null || MaximumValue == '') {
         MaximumValue = 20000;
     }
+
     if (startingPointViewCircleOne == null || startingPointViewCircleOne == '') {
         startingPointViewCircleOne = 5000;
     }
@@ -426,6 +422,10 @@ sliderbutton.onclick = function(event) {
 
     startingPointCircleOne = Math.trunc(startingPointViewCircleOne / coefficient);
     startingPointCircleTwo = Math.trunc(startingPointViewCircleTwo / coefficient);
+
+
+
+
 
     newLeftCircleOne = startingPointCircleOne;
     newLeftCircleTwo = startingPointCircleTwo;
@@ -486,23 +486,34 @@ sliderbutton.onclick = function(event) {
     if (VorG == true) {
 
         SliderLineMin.style.height = SliderLineMinHeight + 'px';
-        SliderLineMin.style.left = startingPointCircleOne + 'px';
-        SliderLineMin.style.width = startingPointCircleTwo - startingPointCircleOne + 'px';
+
 
         //
         SliderLineMin.style.top = 0 + 'px';
+
+
+        if (startingPointCircleOne <= startingPointCircleTwo) {
+            SliderLineMin.style.left = startingPointCircleOne + 'px';
+            SliderLineMin.style.width = startingPointCircleTwo - startingPointCircleOne + 'px';
+        } else {
+            SliderLineMin.style.left = startingPointCircleTwo + 'px';
+            SliderLineMin.style.width = startingPointCircleOne - startingPointCircleTwo + 'px';
+        }
     } else {
         SliderLineMin.style.width = SliderLineMinHeight + 'px';
-        SliderLineMin.style.top = startingPointCircleOne + 'px';
-        SliderLineMin.style.height = startingPointCircleTwo - startingPointCircleOne + 'px';
+
         //
         SliderLineMin.style.left = 0 + 'px';
-
+        if (startingPointCircleOne <= startingPointCircleTwo) {
+            SliderLineMin.style.top = startingPointCircleOne + 'px';
+            SliderLineMin.style.height = startingPointCircleTwo - startingPointCircleOne + 'px';
+        } else {
+            SliderLineMin.style.top = startingPointCircleTwo + 'px';
+            SliderLineMin.style.height = startingPointCircleOne - startingPointCircleTwo + 'px';
+        }
     }
 
-    SliderMoneyOne.textContent = ` ₽${fn(Math.trunc(startingPointCircleOne * coefficient), SliderStepSize)}`;
-    SliderMoneyThree.textContent = ` - `;
-    SliderMoneyTwo.textContent = ` ₽${  fn(Math.trunc(startingPointCircleTwo * coefficient), SliderStepSize)}`;
+
     if (OorT == true && VorG == true) {
         SliderLineMin.style.display = 'block';
         SliderMoneyTwo.style.display = 'inline-block';
@@ -522,6 +533,19 @@ sliderbutton.onclick = function(event) {
         SliderMoneyTwo.style.display = 'none';
         SliderMoneyThree.style.display = 'none';
     }
+
+    if (startingPointCircleOne <= startingPointCircleTwo) {
+        SliderMoneyOne.textContent = ` ₽${fn(Math.trunc(startingPointCircleOne * coefficient), SliderStepSize)}`;
+        SliderMoneyThree.textContent = ` - `;
+        SliderMoneyTwo.textContent = ` ₽${  fn(Math.trunc(startingPointCircleTwo * coefficient), SliderStepSize)}`;
+    } else {
+        SliderMoneyOne.textContent = ` ₽${fn(Math.trunc(startingPointCircleTwo * coefficient), SliderStepSize)}`;
+        SliderMoneyThree.textContent = ` - `;
+        SliderMoneyTwo.textContent = ` ₽${  fn(Math.trunc(startingPointCircleOne * coefficient), SliderStepSize)}`;
+    }
+
+
+
 
 };
 sliderbutton.click();
