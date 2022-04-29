@@ -328,7 +328,14 @@ sliderbutton.onclick = function(event) {
 
     newLeftCircleOne = startingPointCircleOne;
     newLeftCircleTwo = startingPointCircleTwo;
+    if (VorG == true) {
+        SliderGeneral.style.width = SliderLineWidth + 'px';
+        SliderGeneral.style.height = 100 + '%';
 
+    } else {
+        SliderGeneral.style.height = SliderLineWidth + 'px';
+        SliderGeneral.style.width = 300 + 'px';
+    }
     if (VorG == true) {
         SliderLineMargin = 30;
         SliderLine.style.width = SliderLineWidth + 'px';

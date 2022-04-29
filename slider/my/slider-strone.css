@@ -35,13 +35,10 @@ body {
 }
 
 .slider-block {
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 35%;
 }
 
 .slider-options {
-    margin-top: 20px;
     display: inline-block;
     background: #C4C4C4;
     vertical-align: top;

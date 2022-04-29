@@ -1,6 +1,6 @@
 let SliderGeneral = document.querySelector('.slider-general');
 SliderGeneral.style.cssText = `
-display: block;
+display: inline-block;
 position: relative;
 width: 100%;
 margin: 0;`;
@@ -8,7 +8,7 @@ let SliderTitleOne = document.createElement('slider-title_one')
 SliderTitleOne.textContent = 'Диапозон цены';
 SliderTitleOne.style.cssText = `
   display:inline-block;
-  
+  vertical-align:top;
   position:static;
   font-family: Montserrat;
   font-style: normal;
@@ -37,7 +37,7 @@ let SliderLine = document.createElement('slider')
 SliderLine.id = 'slider';
 SliderLine.style.cssText = `
     
-  display:block;
+  display:inline-block;
   background: #FFFFFF;
   border: 1px solid rgba(31, 32, 65, 0.25);
   border-radius: 3px;`;
