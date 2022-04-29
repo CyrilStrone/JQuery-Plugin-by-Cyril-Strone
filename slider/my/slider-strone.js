@@ -292,7 +292,9 @@ function VerOrGor() {
     }
 }
 
-
+sliderbuttonеtwo.onclick = function(event) {
+    location.reload();
+}
 sliderbutton.onclick = function(event) {
     VerOrGor()
     OneOrTwo()

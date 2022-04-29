@@ -89,11 +89,12 @@ body {
 }
 
 .slider-block__values-block {
-    width: 210px;
     height: 20px;
     padding-bottom: 10px;
+    display: inline-block;
 }
 
 .slider-block__values-block:last-child {
     padding-bottom: 35px;
+    float: right;
 }
