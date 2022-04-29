@@ -12,6 +12,7 @@ let SliderStepSize;
 let startingPointViewCircleOne;
 let startingPointViewCircleTwo;
 
+let SliderGeneralWidth;
 let SliderLineMinWidth;
 let SliderLineMinHeight;
 let SliderCircleOneMarginTop;
@@ -292,7 +293,6 @@ function VerOrGor() {
 }
 
 
-
 sliderbutton.onclick = function(event) {
     VerOrGor()
     OneOrTwo()
@@ -317,6 +317,9 @@ sliderbutton.onclick = function(event) {
     SliderCircleTwoG.style.height = SliderCircleTwoWidthHeight + 'px';
     SliderCircleTwoV.style.width = SliderCircleTwoWidthHeight + 'px';
     SliderCircleTwoV.style.height = SliderCircleTwoWidthHeight + 'px';
+
+    SliderGeneral.style.width = SliderLineWidth + 'px';
+
 
     coefficient = (MaximumValue / (SliderLineWidth - SliderCircleOneWidthHeight - SliderCircleBorder)).toFixed(2);
 

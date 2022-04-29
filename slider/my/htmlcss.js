@@ -1,9 +1,15 @@
 let SliderGeneral = document.querySelector('.slider-general');
-
+SliderGeneral.style.cssText = `
+display: block;
+position: relative;
+width: 100%;
+margin: 0;`;
 let SliderTitleOne = document.createElement('slider-title_one')
 SliderTitleOne.textContent = 'Диапозон цены';
 SliderTitleOne.style.cssText = `
-  float: left;
+  display:inline-block;
+  
+  position:static;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -30,8 +36,8 @@ SliderMoneyTwo.textContent = `₽0`;
 let SliderLine = document.createElement('slider')
 SliderLine.id = 'slider';
 SliderLine.style.cssText = `
-
-  display:inline-block;
+    
+  display:block;
   background: #FFFFFF;
   border: 1px solid rgba(31, 32, 65, 0.25);
   border-radius: 3px;`;
@@ -85,7 +91,7 @@ SliderLineMin.style.cssText = `
 let SliderTitleTwo = document.createElement('slider-title_two')
 SliderTitleTwo.textContent = 'Стоимость за сутки пребывания в номере';
 SliderTitleTwo.style.cssText = `
-  display:inline-block;
+  display:block;
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
