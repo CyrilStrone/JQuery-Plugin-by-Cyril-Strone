@@ -29,6 +29,37 @@ function fn(a, num) {
 
 };
 
+function ifNan(a, num) {
+    if (a == null || a == '' || isNaN(a)) {
+
+        return num;
+    } else {
+        return a;
+    }
+}
+
+function bigValue(a, b) {
+    if (a > b) {
+
+        return b - b * (2 / 3);
+    } else {
+        return a;
+    }
+}
+
+function minValue(a, b) {
+    if (a > b) {
+
+        return b - b * (1 / 3);
+    } else {
+        return a;
+    }
+
+}
+
+
+
+
 
 
 
@@ -373,34 +404,20 @@ sliderbutton.onclick = function(event) {
     fun2()
     let a;
     let b;
-    MaximumValue = document.getElementById('max').value;
-    startingPointViewCircleOne = document.getElementById('minPosCircle').value;
-    startingPointViewCircleTwo = document.getElementById('maxPosCircle').value;
-
-    SliderStepSize = Number(document.getElementById('stepSize').value);
-    SliderLineWidth = document.getElementById('LineWidth').value;
-    SliderLineHeight = document.getElementById('LineHeight').value;
 
 
-    if (MaximumValue == null || MaximumValue == '') {
-        MaximumValue = 20000;
-    }
 
-    if (startingPointViewCircleOne == null || startingPointViewCircleOne == '') {
-        startingPointViewCircleOne = 5000;
-    }
-    if (startingPointViewCircleTwo == null || startingPointViewCircleTwo == '') {
-        startingPointViewCircleTwo = 10000;
-    }
-    if (SliderStepSize == null || SliderStepSize == '') {
-        SliderStepSize = 50;
-    }
-    if (SliderLineWidth == null || SliderLineWidth == '') {
-        SliderLineWidth = 300;
-    }
-    if (SliderLineHeight == null || SliderLineHeight == '') {
-        SliderLineHeight = 5;
-    }
+    MaximumValue = ifNan(Number(document.getElementById('max').value), 20000);
+    startingPointViewCircleOne = bigValue(ifNan(Number(document.getElementById('minPosCircle').value), 5000), MaximumValue);
+    startingPointViewCircleTwo = minValue(ifNan(Number(document.getElementById('maxPosCircle').value), 10000, ), MaximumValue);
+    SliderStepSize = ifNan(Number(document.getElementById('stepSize').value), 50);
+    SliderLineWidth = ifNan(Number(document.getElementById('LineWidth').value), 300);
+    SliderLineHeight = ifNan(Number(document.getElementById('LineHeight').value), 5);
+
+
+
+
+
 
 
 
