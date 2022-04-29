@@ -1,4 +1,5 @@
 let SliderGeneral = document.querySelector('.slider-general');
+
 let SliderTitleOne = document.createElement('slider-title_one')
 SliderTitleOne.textContent = 'Диапозон цены';
 SliderTitleOne.style.cssText = `
@@ -29,6 +30,7 @@ SliderMoneyTwo.textContent = `₽0`;
 let SliderLine = document.createElement('slider')
 SliderLine.id = 'slider';
 SliderLine.style.cssText = `
+
   display:inline-block;
   background: #FFFFFF;
   border: 1px solid rgba(31, 32, 65, 0.25);
@@ -40,7 +42,7 @@ SliderCircleOneG.style.cssText = `
   z-index: 999999;
   cursor: pointer;
   position: absolute;
-  background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+  background: linear-gradient(90deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);
   border: 2px solid #FFFFFF;
   border-radius: 10px;
   display:none;`;
@@ -50,7 +52,7 @@ SliderCircleOneV.style.cssText = `
     z-index: 999999;
     cursor: pointer;
     position: absolute;
-    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+    background: linear-gradient(90deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);
     border: 2px solid #FFFFFF;
     border-radius: 10px;
     display:none;`;
@@ -61,7 +63,7 @@ SliderCircleTwoG.style.cssText = `
   z-index: 999999;
   cursor: pointer;
   position: absolute;
-  background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+  background: linear-gradient(90deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);
   border: 2px solid #FFFFFF;
   border-radius: 10px;
   display:none;`;
@@ -71,7 +73,7 @@ SliderCircleTwoV.style.cssText = `
   z-index: 999999;
   cursor: pointer;
   position: absolute;
-  background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+  background: linear-gradient(90deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);
   border: 2px solid #FFFFFF;
   border-radius: 10px;
   display:none;`;
@@ -79,7 +81,7 @@ let SliderLineMin = document.createElement('slider-line_min')
 SliderLineMin.style.cssText = `
   position: relative;
   display:block;
-  background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);`;
+  background: linear-gradient(90deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);`;
 let SliderTitleTwo = document.createElement('slider-title_two')
 SliderTitleTwo.textContent = 'Стоимость за сутки пребывания в номере';
 SliderTitleTwo.style.cssText = `

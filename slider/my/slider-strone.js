@@ -1,9 +1,19 @@
+let UserMaximumValue = 15000;
+let UserSliderLineWidth = 300;
+let UserSliderLineHeight = 5;
+let UserSliderStepSize = 50;
+let UserstartingPointViewCircleOne = 5000;
+let UserstartingPointViewCircleTwo = 10000;
+
 let MaximumValue;
 let SliderLineWidth;
 let SliderLineHeight;
+let SliderStepSize;
+let startingPointViewCircleOne;
+let startingPointViewCircleTwo;
+
 let SliderLineMinWidth;
 let SliderLineMinHeight;
-let SliderStepSize;
 let SliderCircleOneMarginTop;
 let SliderCircleOneMarginLeft;
 let SliderCircleTwoMarginTop;
@@ -11,8 +21,6 @@ let SliderCircleTwoMarginLeft;
 let SliderCircleOneWidthHeight;
 let SliderCircleTwoWidthHeight;
 let SliderCircleBorder = 2;
-let startingPointViewCircleOne;
-let startingPointViewCircleTwo;
 
 let coefficient;
 let startingPointCircleOne;
@@ -21,6 +29,7 @@ let newLeftCircleOne;
 let newLeftCircleTwo;
 
 let SliderLineMargin;
+
 let VorG;
 let OorT;
 
@@ -288,12 +297,12 @@ sliderbutton.onclick = function(event) {
     VerOrGor()
     OneOrTwo()
 
-    MaximumValue = ifNan(Number(document.getElementById('max').value), 20000);
-    startingPointViewCircleOne = bigValue(ifNan(Number(document.getElementById('minPosCircle').value), 5000), MaximumValue);
-    startingPointViewCircleTwo = minValue(ifNan(Number(document.getElementById('maxPosCircle').value), 10000, ), MaximumValue);
-    SliderStepSize = ifNan(Number(document.getElementById('stepSize').value), 50);
-    SliderLineWidth = ifNan(Number(document.getElementById('LineWidth').value), 300);
-    SliderLineHeight = ifNan(Number(document.getElementById('LineHeight').value), 5);
+    MaximumValue = ifNan(Number(document.getElementById('max').value), UserMaximumValue);
+    startingPointViewCircleOne = bigValue(ifNan(Number(document.getElementById('minPosCircle').value), UserstartingPointViewCircleOne), MaximumValue);
+    startingPointViewCircleTwo = minValue(ifNan(Number(document.getElementById('maxPosCircle').value), UserstartingPointViewCircleTwo, ), MaximumValue);
+    SliderStepSize = ifNan(Number(document.getElementById('stepSize').value), UserSliderStepSize);
+    SliderLineWidth = ifNan(Number(document.getElementById('LineWidth').value), UserSliderLineWidth);
+    SliderLineHeight = ifNan(Number(document.getElementById('LineHeight').value), UserSliderLineHeight);
 
     SliderLineMinWidth = SliderLineWidth;
     SliderLineMinHeight = SliderLineHeight;
