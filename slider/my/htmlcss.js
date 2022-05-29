@@ -1,7 +1,7 @@
 let SliderGeneral = document.querySelector('.slider-general');
 SliderGeneral.style.cssText = `
 display: inline-block;
-position: relative;
+position: static;
 width: 100%;
 margin: 0;`;
 let SliderTitleOne = document.createElement('slider-title_one')

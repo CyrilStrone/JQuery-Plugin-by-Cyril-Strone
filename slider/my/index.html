@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider-Strone</title>
+
+    <link rel="stylesheet" href="slider-strone.css">
+    <link rel="stylesheet" href="toggle.css">
+
+
+</head>
+
+<body>
+    <div class="Title">
+        <h1>Slider by Cyril Strone</h1>
+
+    </div>
+    <div class="slider-block">
+        <div class="slider-general" id="slider-general"></div>
+
+
+    </div>
+    <div class="slider-options">
+        <div class="slider-block__values">
+            <div class="slider-block__values-block">
+                <h1>
+                    Максимальное значение
+                </h1>
+                <input id="max" type="text">
+            </div>
+            <div class="slider-block__values-block">
+                <h1>
+                    Начальная позиция 1 круг
+                </h1>
+                <input id="minPosCircle" type="text">
+            </div>
+            <div id="elem1" class="slider-block__values-block">
+                <h1>
+                    Начальная позиция 2 круг
+                </h1>
+                <input id="maxPosCircle" type="text">
+            </div>
+            <div class="slider-block__values-block">
+                <h1>
+                    Шаг
+                </h1>
+                <input id="stepSize" type="text">
+            </div>
+            <div class="slider-block__values-block">
+                <h1>
+                    Длина слайдера
+                </h1>
+                <input id="LineWidth" type="text">
+            </div>
+            <div class="slider-block__values-block">
+                <h1>
+                    Ширина слайдера
+                </h1>
+                <input id="LineHeight" type="text">
+            </div>
+            <div class="slider-block__values-block">
+                <h1>
+                    Горизонтальный/Вертикальный
+                </h1>
+                <label class=" ui-kit__switch">
+                    <input id="VorG" type="checkbox" onchange="fun1()" >
+                    <span  class="ui-kit__switch__slider ui-kit__switch__round" ></span>
+                </label>
+            </div>
+            <div class="slider-block__values-block">
+                <h1>
+                    Одинарный/Двойной
+                </h1>
+                <label class=" ui-kit__switch">
+                    <input id="OorT" type="checkbox" onchange="fun2()" >
+                    <span  class="ui-kit__switch__slider ui-kit__switch__round" ></span>
+                </label>
+            </div>
+            <div class="slider-block__values-block">
+
+                <input id="sliderbutton" type="button" value="Готово">
+            </div>
+            <div class="slider-block__values-block">
+
+                <input id="sliderbuttonеtwo" type="button" value="Сбросить">
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <script src="htmlcss.js"></script>
+    <script src="slider-strone.js"></script>
+
+</body>
+
+
+</html>
